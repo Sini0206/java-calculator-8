@@ -21,11 +21,10 @@ public class Parser {
         List<Integer> numbers = new ArrayList<>();
         String regex = buildRegexToSplit(customSeperator);
         for (String str : validatedStr.split(regex)) {
-            if (str.matches("\\d+")) {   // 양의 정수인 경우만
-                int num = Integer.parseInt(str);
-                if (num > 0)
-                    numbers.add(num);
-            }
+            int num = Integer.parseInt(str);
+            if (num == 0)
+                throw new IllegalArgumentException("잘못된 입력: 0은 입력할 수 없습니다");
+            numbers.add(num);
         }
         return numbers;
     }

@@ -29,7 +29,7 @@ public class Separator {
         }
     }
 
-    private static String buildCustomSeparatorRegex() {
+    public static String buildCustomSeparatorRegex() {
         StringBuilder regexBuilder = new StringBuilder();
         regexBuilder.append("^");
         regexBuilder.append(CustomSeparatorWrapper.DOUBLE_SLASH.getValue());
@@ -40,7 +40,7 @@ public class Separator {
     }
 
     public static String extractCustomSeparator(String validatedStr) {
-        // 커스텀 구분자 추출용 정규식 생성 (문자열 앞 //와 \n 사이 문자)
+        // 커스텀 구분자 추출용 정규식 생성 (문자열 앞 //와 \n 사이 한 문자)
         String regexForCustomSeparator = buildCustomSeparatorRegex();
         // 정규식에 해당하는 커스텀 구분자 추출
         Pattern pattern = Pattern.compile(regexForCustomSeparator);
