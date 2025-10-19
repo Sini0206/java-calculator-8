@@ -65,4 +65,20 @@ public class InputManager {
 
         return regexBuilder.toString();
     }
+
+    public List<Integer> parseNumbers(String validatedStr) {
+        List<Integer> numbers = new ArrayList<>();
+        // 구분용 정규식 생성
+        String customSeparator = extractCustomSeparator(validatedStr);
+        String regex = buildRegexToSplit(customSeparator);
+
+        for (String str : validatedStr.split(regex)) {
+            if (str.matches("\\d+")) {   // 양의 정수인 경우만
+                int num = Integer.parseInt(str);
+                if (num > 0)
+                    numbers.add(num);
+            }
+        }
+        return numbers;
+    }
 }
