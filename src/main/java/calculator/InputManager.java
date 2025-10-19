@@ -52,4 +52,17 @@ public class InputManager {
         }
         return "";
     }
+
+    private String buildRegexToSplit(String customSeparator) {
+        StringBuilder regexBuilder = new StringBuilder();
+        regexBuilder.append("[");
+
+        for (InputManager.DefaultSeparator separator : InputManager.DefaultSeparator.values())  {
+            regexBuilder.append(separator.getValue());
+        }
+        regexBuilder.append(customSeparator);
+        regexBuilder.append("]+"); // 구분자가 여러 개 있어도 구분 e.g. 3::4 -> [3, 4]
+
+        return regexBuilder.toString();
+    }
 }
