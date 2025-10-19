@@ -15,4 +15,16 @@ public class InputManager {
             return value;
         }
     }
+
+    public enum CustomSeparatorWrapper {
+        DOUBLE_SLASH("//"),
+        NEW_LINE("\n");
+        final private String value;
+        CustomSeparatorWrapper(String value) {
+            this.value = value;
+        }
+        public String getValue() {
+            return value;
+        }
+    }
 }
