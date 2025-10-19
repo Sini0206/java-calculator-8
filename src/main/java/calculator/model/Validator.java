@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import static calculator.model.Separator.buildCustomSeparatorRegex;
 
 public class Validator {
-    public static void validateInput(String input) {
+    public static String validateInput(String input) {
         boolean hasCustomSeperator = checkCustomSeperatorExistence(input);
         String firstWrapper = Separator.CustomSeparatorWrapper.DOUBLE_SLASH.getValue();
         String secondWrapper = Separator.CustomSeparatorWrapper.NEW_LINE.getValue();
@@ -26,6 +26,13 @@ public class Validator {
 
         if (input.matches(".*-\\d+.*"))
             throw new IllegalArgumentException("잘못된 입력: 음수는 입력할 수 없습니다.");
+
+        if (hasCustomSeperator) {
+            String customRegex = buildCustomSeparatorRegex();
+            return input.replaceFirst(customRegex, "");
+        }
+
+        return input;
     }
 
     private static boolean checkCustomSeperatorExistence(String input) {
