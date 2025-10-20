@@ -39,12 +39,12 @@ public class Separator {
         return regexBuilder.toString();
     }
 
-    public static String extractCustomSeparator(String validatedStr) {
+    public static String extractCustomSeparator(String validatedFullStr) {
         // 커스텀 구분자 추출용 정규식 생성 (문자열 앞 //와 \n 사이 한 문자)
         String regexForCustomSeparator = buildCustomSeparatorRegex();
         // 정규식에 해당하는 커스텀 구분자 추출
         Pattern pattern = Pattern.compile(regexForCustomSeparator);
-        Matcher matcher = pattern.matcher(validatedStr);
+        Matcher matcher = pattern.matcher(validatedFullStr);
         if (matcher.find()) {
             return matcher.group(1);
         }

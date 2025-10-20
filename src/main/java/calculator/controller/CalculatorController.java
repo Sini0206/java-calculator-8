@@ -13,7 +13,7 @@ public class CalculatorController {
     public void run() {
         String input = InputView.readExpression();
         String validatedString = Validator.validateInput(input);
-        String customSeperator = Separator.extractCustomSeparator(validatedString);
+        String customSeperator = Separator.extractCustomSeparator(input);
         List<Integer> numbers = Parser.parseNumbers(validatedString, customSeperator);
         int result = Calculator.sum(numbers);
         OutputView.printResult(result);
