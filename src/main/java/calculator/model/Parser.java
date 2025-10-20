@@ -21,6 +21,7 @@ public class Parser {
         List<Integer> numbers = new ArrayList<>();
         String regex = buildRegexToSplit(customSeperator);
         for (String str : validatedStr.split(regex)) {
+            if (str.isEmpty()) continue;
             int num = Integer.parseInt(str);
             if (num == 0)
                 throw new IllegalArgumentException("잘못된 입력: 0은 입력할 수 없습니다");
